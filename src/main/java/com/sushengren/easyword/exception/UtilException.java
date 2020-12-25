@@ -3,23 +3,23 @@ package com.sushengren.easyword.exception;
 import com.sushengren.easyword.util.ExceptionUtil;
 
 /**
- * IO运行时异常，常用于对IOException的包装
+ * 工具类异常
  *
  * @author sushengren
  */
-public class IORuntimeException extends RuntimeException {
+public class UtilException extends RuntimeException {
 
     private static final long serialVersionUID = -1L;
 
-    public IORuntimeException(Throwable e) {
+    public UtilException(Throwable e) {
         super(ExceptionUtil.getMessage(e), e);
     }
 
-    public IORuntimeException(String message) {
+    public UtilException(String message) {
         super(message);
     }
 
-    public IORuntimeException(String message, Throwable throwable) {
+    public UtilException(String message, Throwable throwable) {
         super(message, throwable);
     }
 

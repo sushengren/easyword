@@ -14,10 +14,7 @@ public class ExceptionUtil {
      * @return 完整消息
      */
     public static String getMessage(Throwable e) {
-        if (null == e) {
-            return "null";
-        }
-        return e.getClass().getSimpleName() + ": " + e.getMessage();
+        return null != e ? e.getClass().getSimpleName() + ": " + e.getMessage() : "null";
     }
 
 }
