@@ -29,7 +29,7 @@
     <scm>
         <connection>scm:git:git@gitee.com:sushengren/easyword.git</connection>
         <developerConnection>scm:git:ssh://gitee.com:sushengren/easyword.git</developerConnection>
-        <url>https://gitee.com/sushengren/easyword.git</url>
+        <url>https://gitee.com/sushengren/way-crud.git</url>
     </scm>
 
     <distributionManagement>
