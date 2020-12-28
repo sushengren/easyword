@@ -11,44 +11,106 @@ import java.io.InputStream;
 public class TestEntity {
 
     @WordProperty(value = "文物名称")
-    private String name1;
+    private String value1;
 
     @WordProperty("文物级别")
-    private String name2;
+    private String value2;
 
     @WordProperty("总登记号")
-    private String name3;
+    private String value3;
 
     @WordProperty("分类号")
-    private String name4;
+    private String value4;
 
     @WordProperty("档案编号")
-    private String name5;
+    private String value5;
 
     @WordProperty("年")
-    private String name6;
+    private String value6;
 
     @WordProperty("月")
-    private String name7;
+    private String value7;
 
     @WordProperty("日")
-    private String name8;
+    private String value8;
 
-    private String userFiling;
-    private String name;
-    private String originalName;
-    private String ageType;
-    private String recorder;
-    private String makeTime;
-    private String quantity;
-    private String textureSpecific;
-    private String lustre;
-    private String purpose;
-    private String biography;
-    private String length;
+    @WordProperty("制档人")
+    private String value9;
 
-    @WordProperty(value = "img", handle = PictureFillTypeHandle.class)
+    @WordProperty(value = "图片", handle = PictureFillTypeHandle.class)
     private InputStream img;
+
+    public String getValue1() {
+        return value1;
+    }
+
+    public void setValue1(String value1) {
+        this.value1 = value1;
+    }
+
+    public String getValue2() {
+        return value2;
+    }
+
+    public void setValue2(String value2) {
+        this.value2 = value2;
+    }
+
+    public String getValue3() {
+        return value3;
+    }
+
+    public void setValue3(String value3) {
+        this.value3 = value3;
+    }
+
+    public String getValue4() {
+        return value4;
+    }
+
+    public void setValue4(String value4) {
+        this.value4 = value4;
+    }
+
+    public String getValue5() {
+        return value5;
+    }
+
+    public void setValue5(String value5) {
+        this.value5 = value5;
+    }
+
+    public String getValue6() {
+        return value6;
+    }
+
+    public void setValue6(String value6) {
+        this.value6 = value6;
+    }
+
+    public String getValue7() {
+        return value7;
+    }
+
+    public void setValue7(String value7) {
+        this.value7 = value7;
+    }
+
+    public String getValue8() {
+        return value8;
+    }
+
+    public void setValue8(String value8) {
+        this.value8 = value8;
+    }
+
+    public String getValue9() {
+        return value9;
+    }
+
+    public void setValue9(String value9) {
+        this.value9 = value9;
+    }
 
     public InputStream getImg() {
         return img;
@@ -56,166 +118,6 @@ public class TestEntity {
 
     public void setImg(InputStream img) {
         this.img = img;
-    }
-
-    public String getName1() {
-        return name1;
-    }
-
-    public void setName1(String name1) {
-        this.name1 = name1;
-    }
-
-    public String getName2() {
-        return name2;
-    }
-
-    public void setName2(String name2) {
-        this.name2 = name2;
-    }
-
-    public String getName3() {
-        return name3;
-    }
-
-    public void setName3(String name3) {
-        this.name3 = name3;
-    }
-
-    public String getName4() {
-        return name4;
-    }
-
-    public void setName4(String name4) {
-        this.name4 = name4;
-    }
-
-    public String getName5() {
-        return name5;
-    }
-
-    public void setName5(String name5) {
-        this.name5 = name5;
-    }
-
-    public String getName6() {
-        return name6;
-    }
-
-    public void setName6(String name6) {
-        this.name6 = name6;
-    }
-
-    public String getName7() {
-        return name7;
-    }
-
-    public void setName7(String name7) {
-        this.name7 = name7;
-    }
-
-    public String getName8() {
-        return name8;
-    }
-
-    public void setName8(String name8) {
-        this.name8 = name8;
-    }
-
-    public String getUserFiling() {
-        return userFiling;
-    }
-
-    public void setUserFiling(String userFiling) {
-        this.userFiling = userFiling;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getOriginalName() {
-        return originalName;
-    }
-
-    public void setOriginalName(String originalName) {
-        this.originalName = originalName;
-    }
-
-    public String getAgeType() {
-        return ageType;
-    }
-
-    public void setAgeType(String ageType) {
-        this.ageType = ageType;
-    }
-
-    public String getRecorder() {
-        return recorder;
-    }
-
-    public void setRecorder(String recorder) {
-        this.recorder = recorder;
-    }
-
-    public String getMakeTime() {
-        return makeTime;
-    }
-
-    public void setMakeTime(String makeTime) {
-        this.makeTime = makeTime;
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getTextureSpecific() {
-        return textureSpecific;
-    }
-
-    public void setTextureSpecific(String textureSpecific) {
-        this.textureSpecific = textureSpecific;
-    }
-
-    public String getLustre() {
-        return lustre;
-    }
-
-    public void setLustre(String lustre) {
-        this.lustre = lustre;
-    }
-
-    public String getPurpose() {
-        return purpose;
-    }
-
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
-    }
-
-    public String getBiography() {
-        return biography;
-    }
-
-    public void setBiography(String biography) {
-        this.biography = biography;
-    }
-
-    public String getLength() {
-        return length;
-    }
-
-    public void setLength(String length) {
-        this.length = length;
     }
 
 }
