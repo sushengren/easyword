@@ -22,7 +22,7 @@ public class ImageUtil {
      * @return {@link BufferedImage}
      * @throws IORuntimeException IO异常
      */
-    public static BufferedImage toImage(byte[] imageBytes) throws IORuntimeException {
+    public static BufferedImage read(byte[] imageBytes) throws IORuntimeException {
         return read(new ByteArrayInputStream(imageBytes));
     }
 
@@ -37,6 +37,8 @@ public class ImageUtil {
             return ImageIO.read(imageStream);
         } catch (IOException e) {
             throw new IORuntimeException(e);
+        } finally {
+            IoUtil.close(imageStream);
         }
     }
 

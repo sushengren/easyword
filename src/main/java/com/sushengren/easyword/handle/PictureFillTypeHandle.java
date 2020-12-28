@@ -1,6 +1,7 @@
 package com.sushengren.easyword.handle;
 
 import com.sushengren.easyword.util.ImageUtil;
+import com.sushengren.easyword.util.IoUtil;
 import org.apache.poi.util.Units;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
@@ -26,22 +27,18 @@ public class PictureFillTypeHandle implements FillTypeHandle {
             run.setText(run.text().replaceAll(key, ""), 0);
         }
 
-        InputStream in;
+        byte[] bytes;
         if (value instanceof InputStream) {
-            in = (InputStream) value;
+            bytes = IoUtil.readBytes((InputStream) value);
         } else if (value instanceof byte[]) {
-            byte[] bytes = (byte[]) value;
-            in = new ByteArrayInputStream(bytes);
+            bytes = (byte[]) value;
         } else {
             throw new IllegalArgumentException("无效的图片属性");
         }
 
-        BufferedImage read = ImageUtil.read(in);
-        int width = read.getWidth();
-        int height = read.getHeight();
-
+        BufferedImage image = ImageUtil.read(bytes);
         XWPFRun run = runs.iterator().next();
-        addPicture(run, in, width, height);
+        addPicture(run, new ByteArrayInputStream(bytes), image.getWidth(), image.getHeight());
     }
 
     private void addPicture(XWPFRun run, InputStream in, int width, int height) {
@@ -50,7 +47,7 @@ public class PictureFillTypeHandle implements FillTypeHandle {
         } catch (Exception e) {
             throw new IllegalArgumentException("插入图片异常", e);
         } finally {
-            // IoUtil.close(in);
+            IoUtil.close(in);
         }
     }
 

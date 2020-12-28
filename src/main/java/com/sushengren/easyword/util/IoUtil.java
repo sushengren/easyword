@@ -1,11 +1,9 @@
 package com.sushengren.easyword.util;
 
 import com.sushengren.easyword.exception.IORuntimeException;
+import org.apache.commons.compress.utils.IOUtils;
 
-import java.io.Closeable;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 
 /**
  * IO工具类
@@ -25,6 +23,22 @@ public class IoUtil {
             return new FileInputStream(file);
         } catch (FileNotFoundException e) {
             throw new IORuntimeException(e);
+        }
+    }
+
+    /**
+     * 从流中读取bytes，读取完毕后关闭流
+     *
+     * @param in 输入流
+     * @return bytes
+     */
+    public static byte[] readBytes(final InputStream in) {
+        try {
+            return IOUtils.toByteArray(in);
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        } finally {
+            close(in);
         }
     }
 
