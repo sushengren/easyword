@@ -1,17 +1,19 @@
 package com.sushengren.easyword;
 
+import com.sushengren.easyword.annotation.WordProperty;
 import com.sushengren.easyword.exception.IORuntimeException;
+import com.sushengren.easyword.handle.StringFillTypeHandle;
 import com.sushengren.easyword.model.FillData;
 import com.sushengren.easyword.util.IoUtil;
+import com.sushengren.easyword.util.ReflectUtil;
 import org.apache.poi.xwpf.usermodel.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.lang.reflect.Field;
+import java.util.*;
 
 /**
  * @author sushengren
@@ -42,11 +44,24 @@ public class EasyWord {
             }
         }
 
-        // public Builder doWrite(Object data) {
-        //
-        //
-        //     return doWrite();
-        // }
+        public Builder doWrite(Object data) {
+            Map<String, FillData> dataMap = new HashMap<>();
+            List<Field> fieldList = ReflectUtil.getFieldList(data.getClass());
+            for (Field field : fieldList) {
+                WordProperty annotation = field.getAnnotation(WordProperty.class);
+                Object fieldValue = ReflectUtil.getFieldValue(data, field);
+                if (annotation == null) {
+                    dataMap.put(field.getName(), FillData.of(fieldValue, new StringFillTypeHandle()));
+                } else {
+                    try {
+                        dataMap.put(annotation.value(), FillData.of(fieldValue, annotation.handle().newInstance()));
+                    } catch (Exception e) {
+                        throw new IllegalArgumentException(annotation.handle() + "无法创建实例");
+                    }
+                }
+            }
+            return doWrite(dataMap);
+        }
 
         public Builder doWrite(Map<String, FillData> data) {
             for (XWPFTable table : document.getTables()) {
@@ -65,7 +80,7 @@ public class EasyWord {
         }
 
         /**
-         * 用流的方式输出文档
+         * 用流的方式输出文档，此方法会关闭流
          *
          * @param os 输出流
          */

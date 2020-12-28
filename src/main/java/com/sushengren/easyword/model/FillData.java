@@ -17,6 +17,10 @@ public class FillData {
         this.handle = handle;
     }
 
+    public static FillData of(Object value, FillTypeHandle handle) {
+        return new FillData(value, handle);
+    }
+
     public Object getValue() {
         return value;
     }

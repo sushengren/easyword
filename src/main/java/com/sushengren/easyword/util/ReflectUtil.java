@@ -14,7 +14,7 @@ import java.util.WeakHashMap;
  *
  * @author sushengren
  */
-public class MyReflectUtil {
+public class ReflectUtil {
 
     /**
      * 字段缓存

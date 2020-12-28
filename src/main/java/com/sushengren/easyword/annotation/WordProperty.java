@@ -15,11 +15,15 @@ public @interface WordProperty {
 
     /**
      * 对应标签的值，默认值为字段名
+     *
+     * @return 标签值
      */
     String value();
 
     /**
      * 填充处理
+     *
+     * @return 标签处处理对象
      */
     Class<? extends FillTypeHandle> handle() default StringFillTypeHandle.class;
 
